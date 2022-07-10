@@ -1,0 +1,15 @@
+header {
+    background-image: linear-gradient(to right, #00b4fe, #2c0179);
+    text-align: center;
+    color: white;
+}
+
+.search-area {
+    padding: 10px;
+    border-bottom: black solid;
+    margin: 10px;
+}
+
+.search-button {
+    margin-top: 10px;
+}
