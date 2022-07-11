@@ -24,24 +24,71 @@
     <header>
       <h1>Weather Dashboard</h1>
     </header>
-    <main>
-      <div class="container">
-        <div class="row">
-          <div class="col-3 search-area">
-            <h2>Search for a City:</h2>
-            <input type="text" class="form-control" placeholder="San Diego" />
-            <!-- </br> -->
-            <button
-              type="button"
-              class="btn btn-primary btn-block search-button"
-            >
-              Search
-            </button>
+    <main class="row">
+      <div class="col-12 col-md-4">
+        <div class="card">
+          <h2>Search for a City:</h2>
+          <div class="col-12">
+            <form id="city-search" class="form-input">
+              <input type="text" class="form-input" placeholder="San Diego" />
+
+              <button type="button" class="btn btn-primary btn-block">
+                Search
+              </button>
+            </form>
           </div>
         </div>
-        <div class="row">
-          <div class="col-8"></div>
+      </div>
+      <!-- <div class="container" id="forecast"> -->
+      <div class="col-12 col-md-8">
+        <div class="current-weather">
+          <h3>Atlanta (10/21/22)</h3>
+          <h5>Temp</h5>
+          <h5>Wind</h5>
+          <h5>Humidity</h5>
+          <h5>UV Index</h5>
         </div>
+        
+        <div class="col" id="five-day">
+            <h4>5-Day Forecast</h4>
+        <div class="row">
+          <div class="col card bg-dark forecast five-day">
+            <h3>3/31/2022</h3>
+            <h5>Temp</h5>
+            <h5>Wind</h5>
+            <h5>Humidity</h5>
+            <h5>UV Index</h5>
+          </div>
+          <div class="col card bg-dark forecast five-day">
+            <h3>3/31/2022</h3>
+            <h5>Temp</h5>
+            <h5>Wind</h5>
+            <h5>Humidity</h5>
+            <h5>UV Index</h5>
+          </div>
+          <div class="col card bg-dark forecast five-day">
+            <h3>3/31/2022</h3>
+            <h5>Temp</h5>
+            <h5>Wind</h5>
+            <h5>Humidity</h5>
+            <h5>UV Index</h5>
+          </div>
+          <div class="col card bg-dark forecast five-day">
+            <h3>3/31/2022</h3>
+            <h5>Temp</h5>
+            <h5>Wind</h5>
+            <h5>Humidity</h5>
+            <h5>UV Index</h5>
+          </div>
+          <div class="col card bg-dark forecast five-day">
+            <h3>3/31/2022</h3>
+            <h5>Temp</h5>
+            <h5>Wind</h5>
+            <h5>Humidity</h5>
+            <h5>UV Index</h5>
+          </div>
+        </div>
+        <!-- </div> -->
       </div>
     </main>
   </body>
