@@ -18,9 +18,13 @@ var getLocationCoordinates = function (name) {
   fetch(apiUrl).then(function (response) {
     response.json().then(function (data) {
       // console.log(data);
+      document.getElementById("current-forecast").style.display = "block";
       displayWeather(data[0].lat, data[0].lon);
       displayForecast(data[0].lat, data[0].lon);
+
       var city = data[0].name;
+      console.log(city);
+      saveCity(city);
       cityName.innerHTML = city + " (" + currentDate + ") ";
     });
   });
@@ -38,6 +42,7 @@ var displayWeather = function (lat, lon) {
   fetch(apiUrl).then(function (response) {
     response.json().then(function (data) {
       console.log(data);
+      document.getElementById("five-day").style.display = "block";
       var currtemp = data.current.temp;
       var currentwind = data.current.wind_speed;
       var currenthumidity = data.current.humidity;
@@ -167,43 +172,63 @@ var formSubmitHandler = function (event) {
 
   if (cityname) {
     getLocationCoordinates(cityname);
-    saveCity(cityname);
+
     cityname.value = "";
   } else {
     alert("Please enter a City Name");
   }
 };
+var searchHistory = [];
 
-var saveCity = function () {
-  localStorage.setItem("city", JSON.stringify(city));
+var saveCity = function (city) {
+  if (searchHistory.indexOf(city) !== -1) {
+    return;
+  }
+  var cityArr = JSON.parse(localStorage.getItem("cityArr")) || [];
+  cityArr.push(city);
+  localStorage.setItem("cityArr", JSON.stringify(cityArr));
 };
 
 citySearchEl.addEventListener("submit", formSubmitHandler);
 
 var loadHistory = function () {
-  var savedCity = localStorage.getItem("city");
+  var savedCity = localStorage.getItem("cityArr");
   // if there are no tasks, set tasks to an empty array and return out of the function
-  if (!savedCity) {
-    return false;
+  if (savedCity) {
+    searchHistory = JSON.parse(savedCity);
   }
-  console.log("Saved tasks found!");
+  console.log(searchHistory);
   // else, load up saved tasks
 
   // parse into array of objects
-  savedCity = JSON.parse(savedCity);
+  // savedCity = JSON.parse(savedCity);
 
   // loop through savedTasks array
-  for (var i = 0; i < savedCity.length; i++) {
-    // pass each task object into the `createTaskEl()` function
-    createButtonEl(savedCity[i]);
-  }
+  // for (var i = 0; i < savedCity.length; i++) {
+  //   // pass each task object into the `createTaskEl()` function
+  createButtonEl();
+  // }
 };
 
 var createButtonEl = function () {
-  var cityButton = document.createElement("button");
-  cityButton.textContent = savedCity;
-
-  cityButton.appendChild(cityButtonEl);
+  console.log("here we are");
+  for (var i = 0; i <= searchHistory.length - 1; i++) {
+    var cityButton = document.createElement("button");
+    cityButton.textContent = searchHistory[i];
+    cityButton.setAttribute("data-city", searchHistory[i]);
+    console.log(i);
+    cityButtonEl.appendChild(cityButton);
+  }
 };
 
+var buttonForecast = function (event) {
+  // document.getElementById("current-forecast").replaceChildren();
+  console.log("clicked history");
+  var button = event.target;
+  var buttonclick = button.getAttribute("data-city");
+  console.log(buttonclick);
+  getLocationCoordinates(buttonclick);
+};
+
+cityButtonEl.addEventListener("click", buttonForecast);
 loadHistory();
