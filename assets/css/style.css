@@ -1,9 +1,20 @@
+body {
+    margin: 5px;
+}
 header {
     background-image: linear-gradient(to right, #00b4fe, #2c0179);
     text-align: center;
     color: white;
 }
 
+h2{
+    margin-left: 20px;
+}
+
+button {
+    background-color: lightgray;
+    margin: 10px;
+}
 .search-area {
     padding: 10px;
     border-bottom: black solid;
@@ -12,4 +23,25 @@ header {
 
 .search-button {
     margin-top: 10px;
+}
+form{
+    border: none;
+    border-bottom: black solid;
+}
+.form-input{
+    width: 100%;
+    padding: 3%;
+    margin: 5px 0;
+    display: block;
+}
+.current-weather{
+    border: black solid;
+    padding: 5px;
+}
+
+.forecast {
+    color: white;
+}
+.five-day {
+    margin: 5px;
 }
