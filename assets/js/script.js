@@ -12,7 +12,7 @@ var cityButtonEl = document.querySelector("#history");
 // will get latitude and longitude of city , and passes the info to weather function
 var getLocationCoordinates = function (name) {
   var apiUrl =
-    "http://api.openweathermap.org/geo/1.0/direct?q=" +
+    "https://api.openweathermap.org/geo/1.0/direct?q=" +
     name +
     "&appid=f675d7e4c5368e20a20492b4a37fbb0c";
   fetch(apiUrl).then(function (response) {
